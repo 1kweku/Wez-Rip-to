@@ -18,22 +18,26 @@ function getCity(event) {
         .then((weatherData) => weatherData.json())
         .then((jsonWeather) => {
           console.log(jsonWeather);
-          let date = [jsonWeather.list[0].clouds.dt_txt];
-          console.log(date);
-          //getWeather(jsonWeather);
+          getWeather(jsonWeather);
         });
     });
 }
-//   let cityName = document.getElementById("city-name");
-//   let cityTemp = document.getElementById("city-temp");
-//   let cityWind = document.getElementById("city-wind");
-//   let cityHumidity = document.getElementById("city-humidity");
+let cityName = document.getElementById("city-name");
+let cityDate = document.getElementById("city-date");
+let cityTemp = document.getElementById("city-temp");
+let cityWind = document.getElementById("city-wind");
+let cityHumidity = document.getElementById("city-humidity");
 
-//   let nextDay = document.getElementById("next-day").children
-//   let secondDay = document.getElementById("second-day").children
-//   let thirdDay = document.getElementById("third-day").children
-//   let fourthDay = document.getElementById("fourth-day").children
-//   let fifthDay = document.getElementById("fifth-day").children
+let nextDay = document.getElementById("next-day").children;
+let secondDay = document.getElementById("second-day").children;
+let thirdDay = document.getElementById("third-day").children;
+let fourthDay = document.getElementById("fourth-day").children;
+let fifthDay = document.getElementById("fifth-day").children;
+
+let dateAndTime = jsonWeather.list[0].dt_txt;
+let stringDateAndTime = String(dateAndTime);
+let splitDateAndTime = stringDateAndTime.split(" ");
+let date = splitDateAndTime[0];
 
 //   function getWeather(cityWeather) {
 //     cityName.innerHTML = city;
