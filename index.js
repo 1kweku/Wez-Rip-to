@@ -1,22 +1,9 @@
 const searchBtn = document.getElementById("search-btn");
-//const searchForm = document.getElementById("search-form");
 const recentSearches = document.getElementById("recent-searches");
 const APIkey = "1ca1a82fc99c6fa9c9cf0d400c675270";
-var city = document.getElementById("search-input").value;
-var test = "london";
-//var geoQuery = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
-//var weatherURL = `api.openweathermap.org/data/2.5/forecast/daily?q=london&cnt={5}&appid=${APIkey} `;
-
-//function searchHandler(event) {
-//event.preventDefault();
-//if (!city) {
-//console.error("Search value is required");
 
 function getCity(event) {
   var city = document.getElementById("search-input").value;
-
-  let cityName = document.getElementById("city-name");
-  cityName.innerHTML = city;
 
   var geoQuery = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
   fetch(geoQuery)
@@ -27,39 +14,67 @@ function getCity(event) {
       var lon = jsonData[0].lon;
 
       var weatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
-      //var city = document.getElementById("search-input").value
       fetch(weatherURL)
         .then((weatherData) => weatherData.json())
         .then((jsonWeather) => {
           console.log(jsonWeather);
-          getWeather(jsonWeather);
+          let date = [jsonWeather.list[0].clouds.dt_txt];
+          console.log(date);
+          //getWeather(jsonWeather);
         });
     });
-  // let cityName = document.getElementById("city-name");
-  let cityTemp = document.getElementById("city-temp");
-  let cityWind = document.getElementById("city-wind");
-  let cityHumidity = document.getElementById("city-humidity");
-
-  function getWeather(cityWeather) {
-    //cityName.innerHTML = city;
-    cityTemp.innerHTML = cityWeather.list[0].main.temp;
-    cityWind.innerHTML = cityWeather.list[0].wind.speed;
-    cityHumidity.innerHTML = cityWeather.list[0].main.humidity;
-    //console.log(cityWeather);
-  }
 }
+//   let cityName = document.getElementById("city-name");
+//   let cityTemp = document.getElementById("city-temp");
+//   let cityWind = document.getElementById("city-wind");
+//   let cityHumidity = document.getElementById("city-humidity");
 
-// let cityName = document.getElementById("city-name");
-// let cityTemp = document.getElementById("city-temp");
-// let cityWind = document.getElementById("city-wind");
-// let cityHumidity = document.getElementById("city-humidity");
+//   let nextDay = document.getElementById("next-day").children
+//   let secondDay = document.getElementById("second-day").children
+//   let thirdDay = document.getElementById("third-day").children
+//   let fourthDay = document.getElementById("fourth-day").children
+//   let fifthDay = document.getElementById("fifth-day").children
 
-// function getWeather(cityWeather) {
-//   cityName.innerHTML = city;
-//   cityTemp.innerHTML = cityWeather.list.main.temp;
-//   cityWind.innerHTML = cityWeather.list.wind.speed;
-//   cityHumidity.innerHTML = cityWeather.list.main.humidity;
-//   console.log(cityWeather);
+//   function getWeather(cityWeather) {
+//     cityName.innerHTML = city;
+//     cityTemp.innerHTML = cityWeather.list[0].main.temp;
+//     cityWind.innerHTML = cityWeather.list[0].wind.speed;
+//     cityHumidity.innerHTML = cityWeather.list[0].main.humidity;
+//     //console.log(cityWeather);
+//     nextDay[0].innerHTML =
+//     nextDay[1].innerHTML =
+//     nextDay[2].innerHTML =
+//     nextDay[3].innerHTML =
+
+//     secondDay[0].innerHTML =
+//     secondDay[1].innerHTML =
+//     secondDay[2].innerHTML =
+//     secondDay[3].innerHTML =
+
+//     thirdDay[0].innerHTML =
+//     thirdDay[1].innerHTML =
+//     thirdDay[2].innerHTML =
+//     thirdDay[3].innerHTML =
+
+//     fourthDay[0].innerHTML =
+//     fourthDay[1].innerHTML =
+//     fourthDay[2].innerHTML =
+//     fourthDay[3].innerHTML =
+
+//     fifthDay[0].innerHTML =
+//     fifthDay[1].innerHTML =
+//     fifthDay[2].innerHTML =
+//     fifthDay[3].innerHTML =
+
+//   }
 // }
+
+// //const nextDay = document.getElementById("myDIV").children
+// let count = document.getElementById("next-day").children;
+// function countChildren() {
+//   console.log(count);
+// }
+
+// countChildren();
 
 searchBtn.addEventListener("click", getCity);
