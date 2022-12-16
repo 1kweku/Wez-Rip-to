@@ -4,7 +4,7 @@ const recentSearches = document.getElementById("recent-searches");
 const APIkey = "1ca1a82fc99c6fa9c9cf0d400c675270";
 var city = document.getElementById("search-input").value;
 var test = "london";
-var geoQuery = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
+//var geoQuery = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
 //var weatherURL = `api.openweathermap.org/data/2.5/forecast/daily?q=london&cnt={5}&appid=${APIkey} `;
 
 //function searchHandler(event) {
@@ -13,6 +13,12 @@ var geoQuery = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${A
 //console.error("Search value is required");
 
 function getCity(event) {
+  var city = document.getElementById("search-input").value;
+
+  let cityName = document.getElementById("city-name");
+  cityName.innerHTML = city;
+
+  var geoQuery = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
   fetch(geoQuery)
     .then((res) => res.json())
     .then((jsonData) => {
@@ -21,7 +27,7 @@ function getCity(event) {
       var lon = jsonData[0].lon;
 
       var weatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
-
+      //var city = document.getElementById("search-input").value
       fetch(weatherURL)
         .then((weatherData) => weatherData.json())
         .then((jsonWeather) => {
@@ -29,6 +35,18 @@ function getCity(event) {
           getWeather(jsonWeather);
         });
     });
+  // let cityName = document.getElementById("city-name");
+  let cityTemp = document.getElementById("city-temp");
+  let cityWind = document.getElementById("city-wind");
+  let cityHumidity = document.getElementById("city-humidity");
+
+  function getWeather(cityWeather) {
+    //cityName.innerHTML = city;
+    cityTemp.innerHTML = cityWeather.list[0].main.temp;
+    cityWind.innerHTML = cityWeather.list[0].wind.speed;
+    cityHumidity.innerHTML = cityWeather.list[0].main.humidity;
+    //console.log(cityWeather);
+  }
 }
 
 // let cityName = document.getElementById("city-name");
