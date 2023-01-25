@@ -1,0 +1,27 @@
+
+#title {
+text-align: center;
+background-color:cornflowerblue;
+}
+
+#cityInfo {
+    align-items: center;
+}
+
+#forecast-parent {
+    display: flex;
+    justify-content: space-between;
+}
+
+#forecast {
+    text-align: center;
+}
+
+#next-day,
+#second-day,
+#third-day,
+#fourth-day,
+#fifth-day {
+    background-color: navy;
+    color: white;
+}
