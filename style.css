@@ -3,6 +3,9 @@
 text-align: center;
 background-color:cornflowerblue;
 }
+.input {
+    align-items: center;
+}
 
 #cityInfo {
     align-items: center;
@@ -22,6 +25,13 @@ background-color:cornflowerblue;
 #third-day,
 #fourth-day,
 #fifth-day {
-    background-color: navy;
+    /* background-color: navy; */
+    background-image: linear-gradient(navy, blue);
     color: white;
+    
+    padding: 10px;
+}
+
+.hide  {
+    display: none;
 }

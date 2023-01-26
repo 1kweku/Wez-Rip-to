@@ -87,7 +87,6 @@ function getCity(city) {
 
     //current day and temperature values
     cityDate.innerHTML = date;
-
     cityTemp.innerHTML = "Temperature: " + cityWeather.list[0].main.temp;
     cityWind.innerHTML = "Wind speed: " + cityWeather.list[0].wind.speed;
     cityHumidity.innerHTML = "Humidity: " + cityWeather.list[0].main.humidity;
@@ -148,4 +147,11 @@ displayHistory();
 searchBtn.addEventListener("click", function () {
   var city = document.getElementById("search-input").value;
   getCity(city);
+});
+
+searchBtn.addEventListener("click", function () {
+  const element = document.querySelectorAll(
+    "#next-day, #second-day, #third-day, #fourth-day, #fifth-day"
+  );
+  element.classList.remove("hide");
 });
