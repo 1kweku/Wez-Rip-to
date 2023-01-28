@@ -138,6 +138,14 @@ function displayHistory() {
         const city = this.textContent;
         getCity(city);
       });
+      buttonHistory[i].addEventListener("click", function () {
+        const element = document.querySelectorAll(
+          "#next-day, #second-day, #third-day, #fourth-day, #fifth-day"
+        );
+        for (let i = 0; i < element.length; i++) {
+          element[i].classList.remove("hide");
+        }
+      });
     }
   }
 }
@@ -153,5 +161,7 @@ searchBtn.addEventListener("click", function () {
   const element = document.querySelectorAll(
     "#next-day, #second-day, #third-day, #fourth-day, #fifth-day"
   );
-  element.classList.remove("hide");
+  for (let i = 0; i < element.length; i++) {
+    element[i].classList.remove("hide");
+  }
 });
