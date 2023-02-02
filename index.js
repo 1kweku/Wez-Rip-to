@@ -5,7 +5,7 @@ const cityHistory = document.getElementById("recentSearches");
 let recentCities = [];
 
 function getCity(city) {
-  var geoQuery = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
+  var geoQuery = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
   fetch(geoQuery)
     .then((res) => res.json())
     .then((jsonData) => {
